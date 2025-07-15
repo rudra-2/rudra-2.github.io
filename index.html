@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PATEL RM | Glitch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: black;
+      color: #00ff9f;
+      font-family: 'Orbitron', sans-serif;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .glitch {
+      font-size: 60px;
+      position: relative;
+      animation: flicker 2s infinite;
+      color: #00ff9f;
+      text-shadow:
+        0 0 5px #00ff9f,
+        0 0 10px #00ff9f,
+        0 0 20px #00ff9f,
+        0 0 40px #0ff,
+        0 0 80px #0ff;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      color: #ff00c8;
+      z-index: -1;
+    }
+
+    .glitch::before {
+      top: -2px;
+      text-shadow: 2px 0 #f0f;
+      animation: glitchTop 1s infinite linear alternate-reverse;
+    }
+
+    .glitch::after {
+      bottom: -2px;
+      text-shadow: -2px 0 #0ff;
+      animation: glitchBottom 1s infinite linear alternate-reverse;
+    }
+
+    @keyframes glitchTop {
+      0% { clip-path: inset(0 0 80% 0); }
+      20% { clip-path: inset(10% 0 70% 0); }
+      40% { clip-path: inset(30% 0 50% 0); }
+      60% { clip-path: inset(40% 0 30% 0); }
+      80% { clip-path: inset(50% 0 10% 0); }
+      100% { clip-path: inset(60% 0 0 0); }
+    }
+
+    @keyframes glitchBottom {
+      0% { clip-path: inset(60% 0 0 0); }
+      20% { clip-path: inset(40% 0 30% 0); }
+      40% { clip-path: inset(30% 0 50% 0); }
+      60% { clip-path: inset(20% 0 60% 0); }
+      80% { clip-path: inset(10% 0 70% 0); }
+      100% { clip-path: inset(0 0 80% 0); }
+    }
+
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+      }
+      20%, 22%, 24%, 55% {
+        opacity: 0.3;
+      }
+    }
+
+    .typing {
+      color: #aaa;
+      font-size: 16px;
+      margin-top: 20px;
+      border-right: 2px solid #aaa;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 3s steps(30, end) 1s forwards;
+    }
+
+    @keyframes typing {
+      to { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="glitch" data-text="PATEL RM 🔥">PATEL RM 🔥</div>
+  <div class="typing">Loading... ⚙️ Bringing the glitch alive</div>
+</body>
+</html>
